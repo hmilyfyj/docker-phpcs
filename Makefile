@@ -113,7 +113,7 @@ pull:
 	docker pull php:$(PHP)-cli-alpine
 
 login:
-	yes | docker login --username $(USER) --password $(PASS)
+	yes | docker login --username $(USER) --password $(PASS) registry.cn-hangzhou.aliyuncs.com
 
 push:
 	@$(MAKE) tag TAG=$(TAG)
