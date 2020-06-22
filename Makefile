@@ -9,7 +9,7 @@ CURRENT_PHP_VERSION =
 
 DIR = .
 FILE = Dockerfile
-IMAGE = cytopia/phpcs
+IMAGE = fengit/phpcs
 TAG = latest
 
 PHP   = latest
