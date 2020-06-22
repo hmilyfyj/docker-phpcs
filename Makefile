@@ -57,14 +57,14 @@ _test-phpcs-version:
 			| tail -1 \
 		)"; \
 		echo "Testing for latest: $${LATEST}"; \
-		if ! docker run --rm $(IMAGE) --version | grep -E "^PHP_CodeSniffer[[:space:]]+version[[:space:]]+v?$${LATEST}"; then \
+		if ! docker run --rm $(IMAGE) phpcs --version | grep -E "^PHP_CodeSniffer[[:space:]]+version[[:space:]]+v?$${LATEST}"; then \
 			echo "Failed"; \
 			exit 1; \
 		fi; \
 	else \
 		echo "Testing for tag: $(PHPCS).x.x"; \
 		docker run --rm $(IMAGE) --version; \
-		if ! docker run --rm $(IMAGE) --version | grep -E "^PHP_CodeSniffer[[:space:]]+version[[:space:]]+v?$(PHPCS)\.[.0-9]+"; then \
+		if ! docker run --rm $(IMAGE) phpcs --version | grep -E "^PHP_CodeSniffer[[:space:]]+version[[:space:]]+v?$(PHPCS)\.[.0-9]+"; then \
 			echo "Failed"; \
 			exit 1; \
 		fi; \
@@ -86,7 +86,7 @@ _test-run:
 	@echo "------------------------------------------------------------"
 	@echo "- Testing phpcs (success)"
 	@echo "------------------------------------------------------------"
-	@if ! docker run --rm -v $(CURRENT_DIR)/tests/ok:/data $(IMAGE) .; then \
+	@if ! docker run --rm -v $(CURRENT_DIR)/tests/ok:/data $(IMAGE) phpcs .; then \
 		echo "Failed"; \
 		exit 1; \
 	fi; \
@@ -94,7 +94,7 @@ _test-run:
 	@echo "------------------------------------------------------------"
 	@echo "- Testing phpcs (failure)"
 	@echo "------------------------------------------------------------"
-	@if docker run --rm -v $(CURRENT_DIR)/tests/fail:/data $(IMAGE) .; then \
+	@if docker run --rm -v $(CURRENT_DIR)/tests/fail:/data $(IMAGE) phpcs .; then \
 		echo "Failed"; \
 		exit 1; \
 	fi; \
