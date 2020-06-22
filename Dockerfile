@@ -32,5 +32,5 @@ COPY --from=builder /usr/bin/phpcs /usr/bin/phpcs
 ENV WORKDIR /data
 WORKDIR /data
 
-ENTRYPOINT ["phpcs"]
+# ENTRYPOINT ["phpcs"]
 CMD ["--version"]
