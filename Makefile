@@ -9,7 +9,7 @@ CURRENT_PHP_VERSION =
 
 DIR = .
 FILE = Dockerfile
-IMAGE = fengit/phpcs
+IMAGE = registry.cn-hangzhou.aliyuncs.com/shanjing/phpcs
 TAG = latest
 
 PHP   = latest
