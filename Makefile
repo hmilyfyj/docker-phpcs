@@ -63,6 +63,7 @@ _test-phpcs-version:
 		fi; \
 	else \
 		echo "Testing for tag: $(PHPCS).x.x"; \
+		docker run --rm $(IMAGE) --version; \
 		if ! docker run --rm $(IMAGE) --version | grep -E "^PHP_CodeSniffer[[:space:]]+version[[:space:]]+v?$(PHPCS)\.[.0-9]+"; then \
 			echo "Failed"; \
 			exit 1; \
