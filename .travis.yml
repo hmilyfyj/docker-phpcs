@@ -88,7 +88,7 @@ script:
             while ! make push TAG="${PHPCS}-php${PHP}-${TRAVIS_TAG}"; do sleep 1; done;
           fi
         fi
-      elif [ "${TRAVIS_BRANCH}" == "master" || "${TRAVIS_BRANCH}" == "aliyun" ]; then
+      elif [ "${TRAVIS_BRANCH}" == "master" ] || [ "${TRAVIS_BRANCH}" == "aliyun" ]; then
         if [ "${PHPCS}" == "latest" ] && [ "${PHP}" == "latest" ]; then
           while ! make push TAG=latest; do sleep 1; done;
         else
