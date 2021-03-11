@@ -20,7 +20,10 @@ RUN set -eux \
 	fi \
 	&& curl -sS -L https://github.com/squizlabs/PHP_CodeSniffer/releases/download/${VERSION}/phpcs.phar -o /phpcs.phar \
 	&& chmod +x /phpcs.phar \
-	&& mv /phpcs.phar /usr/bin/phpcs
+	&& mv /phpcs.phar /usr/bin/phpcs \
+	&& curl -sL http://static.phpmd.org/php/latest/phpmd.phar -o /usr/bin/phpmd \
+	&& chmod +x /usr/bin/phpmd \
+	&& rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
 
 FROM php:${PHP} as production
